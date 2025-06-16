@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from './button';
-import { loginUser } from '../utils/UserInfo';
+import { login } from '../utils/Auth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
-      const result = loginUser(formData.email, formData.password);
+      const result = await login(formData.email, formData.password);
       
       if (!result.success) {
         throw new Error(result.error);

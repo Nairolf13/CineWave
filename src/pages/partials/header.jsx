@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import useSearchFilms from '../../utils/searchAPI';
-import { getCurrentUser, logoutUser } from '../../utils/UserInfo';
+import { getCurrentUser, logout } from '../../utils/Auth';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Header = () => {
   };
   
   const handleLogout = () => {
-    logoutUser();
+    logout();
     setCurrentUser(null);
     // Déclencher un événement de stockage pour mettre à jour les autres composants
     window.dispatchEvent(new Event('storage'));

@@ -8,17 +8,7 @@ import RegisterPage from "./pages/register";
 import AdminPage from "./pages/admin";
 import { useState, useEffect } from "react";
 import { WatchlistProvider } from "./utils/WatchlistContext";
-import { getCurrentUser } from "./utils/UserInfo";
-
-const ProtectedRoute = ({ children }) => {
-  const user = getCurrentUser();
-  
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return children;
-};
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,34 +41,34 @@ function App() {
           <Route path="/" element={<Home />} />
           
           <Route path="/films" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <Catalogue />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           <Route path="/film/:id" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <FilmDetail />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           <Route path="/catalogue" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <Catalogue />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           <Route path="/recherche" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <Catalogue />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           <Route path="/ma-liste" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <Watchlist />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           <Route path="/admin" element={
-            <ProtectedRoute>
+            <PrivateRoute>
               <AdminPage />
-            </ProtectedRoute>
+            </PrivateRoute>
           } />
           
           <Route path="/login" element={<LoginPage />} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from '../components/Register';
+import RegisterComponent from '../components/RegisterComponent';
 import Header from './partials/header';
 import Footer from './partials/footer';
 
@@ -8,7 +8,7 @@ const RegisterPage = () => {
     <div className="min-h-screen bg-black">
       <Header />
       <div className="pt-16">
-        <Register />
+        <RegisterComponent />
       </div>
       <Footer />
     </div>

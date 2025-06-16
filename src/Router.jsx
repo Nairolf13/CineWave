@@ -7,7 +7,7 @@ import Watchlist from './pages/watchlist';
 import Login from './pages/login';
 import Register from './pages/register';
 import AdminPage from './pages/admin';
-import { getCurrentUser } from './utils/UserInfo';
+import { getCurrentUser } from './utils/Auth';
 
 const ProtectedRoute = ({ element }) => {
   const currentUser = getCurrentUser();

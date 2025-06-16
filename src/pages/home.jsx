@@ -10,7 +10,7 @@ import Modal from '../components/MediaPlayer';
 import { useFeaturedMovie } from '../utils/useFeaturedMovie.js';
 import useGetFilms from '../utils/FilmsAPI.js';
 import { getFilmVideos } from '../utils/FilmsAPI.js';
-import { getCurrentUser } from '../utils/UserInfo.js';
+import { getCurrentUser } from '../utils/Auth.js';
 
 const globalStyles = `
   .hide-scrollbar {
@@ -37,7 +37,7 @@ const Home = () => {
     console.log("État de connexion :", user ? "Connecté" : "Non connecté", user);
     
     // Vérification supplémentaire pour s'assurer que l'utilisateur est valide
-    if (user && (!user.id || !user.email)) {
+    if (user && !user.email) {
       console.log("Utilisateur invalide détecté, nettoyage...");
       localStorage.removeItem('cinewave-current-user');
       setCurrentUser(null);
@@ -148,7 +148,7 @@ const Home = () => {
       )}
       
       {/* Contenu disponible uniquement pour les utilisateurs connectés */}
-      {currentUser && currentUser.id ? (
+      {currentUser ? (
         <div className="container mx-auto px-4">
           <div className="mt-8">
             <CategoryList 
